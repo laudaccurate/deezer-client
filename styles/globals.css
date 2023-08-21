@@ -2,26 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+	margin: 0px;
+	scrollbar-width: thin;
+	scrollbar-color: #4d7fff #ddd;
+}
+
+.ac-form::-webkit-scrollbar {
+	width: 16px;
+}
+
+.ac-form::-webkit-scrollbar-thumb {
+	border: 5px solid transparent;
+  border-radius: 100px;
+  background-color: #6d6e72;
+  background-clip: content-box;
+}
+
+.ac-form::-webkit-scrollbar-track {
+	background-color: #e4e4e4;
+	border-radius: 100px;
 }
