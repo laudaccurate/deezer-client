@@ -3,14 +3,14 @@ import { API_URL } from "@/lib/constants";
 import notify from "@/lib/notify";
 
 const handler = (req: NextApiRequest, res: NextApiResponse) => {
-  console.log("query = ", req.body);
-
   const requestOptions = {
     method: "GET",
     redirect: "follow",
   };
+  const data = JSON.parse(req.body)
+  const search = data.search;
 
-  fetch(`${API_URL}/search?q=${req.query}`, requestOptions as RequestInit)
+  fetch(`${API_URL}/search?q=${search}`, requestOptions as RequestInit)
     .then((response) => response.text())
     .then((result) => {
       const resp = JSON.parse(result);
@@ -21,11 +21,6 @@ const handler = (req: NextApiRequest, res: NextApiResponse) => {
     })
     .catch((error) => {
       console.log("error", error);
-       notify.error({
-        title: "Search Failed",
-        id: "search-failed",
-        message: error ?? "Unable to fetch results",
-      });
 
       return res.status(error.status).json(error);
     });

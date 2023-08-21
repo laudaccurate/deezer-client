@@ -1,21 +1,22 @@
 import "@/styles/globals.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import LoadingProvider from "../components/Utils/LoadingFallback";
-import { Poppins } from "next/font/google";
+import { Karla } from "next/font/google";
 import Layout from "@/components/Utils/Layout";
 import ErrorBoundary from "@/components/Utils/ErrorBoundary";
+import { SearchResult } from "@/hooks/context/SearchResult";
 
-const font = Poppins({
+const font = Karla({
   subsets: ["latin"],
   display: "swap",
-  // variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
 
 export default function App({ Component, pageProps }: AppProps) {
+  const [searchResult, setSearchResult] = useState([]);
 
   return (
     <div className={font.className}>
@@ -28,25 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
             "*, *::before, *::after": {
               boxSizing: "border-box",
             },
-
-            body: {
-              ...theme.fn.fontStyles(),
-              ...font.style,
-              backgroundColor:
-                theme.colorScheme === "dark"
-                  ? theme.colors.dark[7]
-                  : theme.white,
-              color:
-                theme.colorScheme === "dark"
-                  ? theme.colors.dark[0]
-                  : theme.black,
-              lineHeight: theme.lineHeight,
-            },
           }),
-
-          fontFamily: font.style.fontFamily,
-          fontFamilyMonospace: "Poppins, Courier, monospace",
-          headings: { fontFamily: "Poppins, sans-serif" },
           colors: {
             deezer: [
               "#fff5ea",
@@ -66,17 +49,16 @@ export default function App({ Component, pageProps }: AppProps) {
           colorScheme: "light",
         }}
       >
-        {/* <CustomFonts /> */}
         <Notifications position="top-center" />
 
         <LoadingProvider>
-          {/* <PersistLogin/> */}
-          
-                <Layout pageTitle="Page">
-                  <ErrorBoundary>
-                    <Component {...pageProps} />
-                  </ErrorBoundary>
-                </Layout>
+          <SearchResult.Provider value={{ searchResult, setSearchResult }}>
+            <Layout pageTitle="Page">
+              <ErrorBoundary>
+                <Component {...pageProps} />
+              </ErrorBoundary>
+            </Layout>
+          </SearchResult.Provider>
         </LoadingProvider>
       </MantineProvider>
     </div>

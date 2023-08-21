@@ -3,21 +3,32 @@ import { TextInput } from "@mantine/core";
 import { useState, useContext } from "react";
 import { TbSearch } from "react-icons/tb";
 import { LoadingContext } from "../Utils/LoadingFallback";
+import { useSearchResultContext } from "@/hooks/context/SearchResult";
 
 const SearchComponent: React.FC<{}> = () => {
   const [searchText, setSearchText] = useState<string>("");
-  const {pageLoading, setPageLoading} = useContext(LoadingContext);
+  const { pageLoading, setPageLoading } = useContext(LoadingContext);
+  const [showHeader, setShowHeader] = useState(false);
+  const {setSearchResult} = useSearchResultContext();
 
   const onSubmit = async (e: any) => {
     setPageLoading(true);
 
     e.preventDefault();
-    console.log("requesting for :: ", searchText)
-    const res = await fetch("/api/search", {method: "POST", body: JSON.stringify({search: searchText})});
-    console.log("received :: ", res.json);
+    console.log("requesting for :: ", searchText);
+    const res = await fetch("/api/search", {
+      method: "POST",
+      body: JSON.stringify({ search: searchText }),
+    });
+    const data = await res.json();
 
+
+    console.log('final res = ', data)
+    setSearchResult(data);
+
+    setShowHeader(true)
     setPageLoading(false);
-  }
+  };
 
   return (
     <form onSubmit={onSubmit}>
@@ -36,6 +47,13 @@ const SearchComponent: React.FC<{}> = () => {
           Search
         </button>
       </div>
+      {showHeader && (
+        <div
+          className={`${karla.className} mx-auto w-full text-center p-3 font-bold textlg`}
+        >
+          Showing results for &quot; {searchText} &quot;
+        </div>
+      )}
     </form>
   );
 };
