@@ -2,6 +2,8 @@
 import React from "react";
 import Head from "next/head";
 import { ModalsProvider } from "@mantine/modals";
+import { AppShell } from "@mantine/core";
+import AppHeader from "../Home/Navbar/Header";
 
 const Layout: React.FC<{ pageTitle: string, children: any }> = ({ pageTitle, children }) => {
 
@@ -22,7 +24,9 @@ const Layout: React.FC<{ pageTitle: string, children: any }> = ({ pageTitle, chi
         }}
       >
         <main className={`min-h-screen`}>
+          <AppShell header={<AppHeader/>}>
           <div className="h-[calc(100%-60px)] w-full">{children}</div>
+          </AppShell>
         </main>
       </ModalsProvider>
     </>
