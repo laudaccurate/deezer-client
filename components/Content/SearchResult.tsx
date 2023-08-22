@@ -5,8 +5,8 @@ import { SimpleGrid } from "@mantine/core";
 const SearchResultComponent: React.FC<{}> = () => {
   const { searchResult } = useSearchResultContext();
   return (
-    <div className="mt-[160px]">
-      <SimpleGrid cols={3} spacing={26}>
+    <div className="mt-[100px]">
+      <SimpleGrid cols={3} spacing={30}>
         {searchResult.map((item: any) => (
           <ResultCard result={item} key={item.id} />
         ))}

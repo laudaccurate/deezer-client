@@ -35,7 +35,7 @@ const SearchComponent: React.FC<{}> = () => {
       <div className=" w-[60%] mx-auto flex justify-between items-center rounded-full pl-3 h-10 border-neutral-400 shadow-md border-2 relative">
         <TbSearch size={20} className="text-primary mx-2" />
         <input
-          className={`${karla.className} text-sm focus:outline-none w-[90%] text-neutral-600`}
+          className={`${karla.className} text-sm focus:outline-none w-[90%] text-neutral-600 bg-transparent`}
           placeholder="Type a Song, Album or an Artist..."
           value={searchText}
           onChange={(e) => setSearchText(e.currentTarget.value)}
