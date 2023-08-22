@@ -3,8 +3,12 @@
     "public": "build",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
+       {
+        "source": "**",
+        "destination": "/index.html"
+      },
       {
-        "destination": "/api/artist/[id].html",
+        "destination": "/api/artist/[id]/index.html",
         "regex": "^/api/artist/([^/]+?)(?:/)?$"
       },
       {
@@ -16,7 +20,7 @@
         "regex": "^/api/artist/([^/]+?)/top(?:/)?$"
       },
       {
-        "destination": "/artist/[id].html",
+        "destination": "/artist/[id]/index.html",
         "regex": "^/artist/([^/]+?)(?:/)?$"
       }
     ]
