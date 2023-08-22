@@ -9,7 +9,6 @@ if (process.env.NODE_ENV === "production") {
 
 const nextConfig = {
   reactStrictMode: true,
-  
   compiler,
   env: {
     CAPTCHA_SITE_KEY: process.env.CAPTCHA_SITE_KEY,

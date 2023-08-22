@@ -6,7 +6,7 @@ import { TbClock, TbShare, TbHeart, TbBookmark } from "react-icons/tb";
 
 const ResultCard: React.FC<{ result: any }> = ({ result }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-md cursor-pointer ${karla.className}`}>
+    <div className={`bg-white rounded-lg shadow-md ${karla.className}`}>
       <div className="h-[180px] w-full relative rounded-t-lg">
         <Image
           alt="Album Cover"
@@ -32,7 +32,9 @@ const ResultCard: React.FC<{ result: any }> = ({ result }) => {
               radius="xl"
               mr="xs"
             />
-            <div>{result.artist.name}</div>
+            <div className="cursor-pointer no-underline underline-offset-1">
+              <a href={`/artist/${result.artist.id}`}>{result.artist.name}</a>
+            </div>
           </Center>
 
           <Group spacing={8} mr={0}>

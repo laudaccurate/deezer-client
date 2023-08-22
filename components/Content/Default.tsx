@@ -2,7 +2,7 @@ import { Center } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 
-export default function DeafultContent() {
+export default function DefaultContent() {
   return (
     <Center className="mx-auto w-full mt-[150px]">
       <div>

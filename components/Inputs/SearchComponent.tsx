@@ -16,6 +16,7 @@ const SearchComponent: React.FC<{}> = () => {
 
     e.preventDefault();
     console.log("requesting for :: ", searchText);
+    
     const res = await fetch("/api/search", {
       method: "POST",
       body: JSON.stringify({ search: searchText }),

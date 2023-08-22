@@ -1,1 +1,1 @@
-export const API_URL = "https://api.deezer.com/";
+export const API_URL = "https://api.deezer.com";

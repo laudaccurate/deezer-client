@@ -1,4 +1,4 @@
-import DeafultContent from "@/components/Content/Default";
+import DefaultContent from "@/components/Content/Default";
 import SearchResultComponent from "@/components/Content/SearchResult";
 import SearchComponent from "@/components/Inputs/SearchComponent";
 import { useSearchResultContext } from "@/hooks/context/SearchResult";
@@ -12,7 +12,7 @@ export default function Home() {
       </div>
       <div className="w-full">
         {!searchResult || searchResult.length == 0 ? (
-          <DeafultContent />
+          <DefaultContent />
         ) : (
           <SearchResultComponent />
         )}
