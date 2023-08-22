@@ -32,7 +32,7 @@ const SearchComponent: React.FC<{}> = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className="mx-auto w-[60%] flex justify-between items-center rounded-full pl-3 h-10 border-neutral-400 shadow-md border-2">
+      <div className=" w-[60%] mx-auto flex justify-between items-center rounded-full pl-3 h-10 border-neutral-400 shadow-md border-2 relative">
         <TbSearch size={20} className="text-primary mx-2" />
         <input
           className={`${karla.className} text-sm focus:outline-none w-[90%] text-neutral-600`}

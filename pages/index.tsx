@@ -1,10 +1,22 @@
+import DeafultContent from "@/components/Content/Default";
+import SearchResultComponent from "@/components/Content/SearchResult";
 import SearchComponent from "@/components/Inputs/SearchComponent";
+import { useSearchResultContext } from "@/hooks/context/SearchResult";
 
 export default function Home() {
-  return <main className="h-full w-full md:w-[70%] mt-[90px] mx-auto py-4">
-    <SearchComponent/>
-    <div className="w-full">
-      
-    </div>
-  </main>;
+  const { searchResult } = useSearchResultContext();
+  return (
+    <main className="h-full w-full md:w-[70%] mt-[50px] mx-auto py-4 bg-white">
+      <div className="fixed z-40 mx-auto w-[70%] bg-white">
+        <SearchComponent />
+      </div>
+      <div className="w-full">
+        {!searchResult || searchResult.length == 0 ? (
+          <DeafultContent />
+        ) : (
+          <SearchResultComponent />
+        )}
+      </div>
+    </main>
+  );
 }
