@@ -45,7 +45,7 @@ const SearchComponent: React.FC<{}> = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <div className=" w-[60%] mx-auto flex justify-between items-center rounded-full pl-3 h-10 border-neutral-400 shadow-md border-2 relative">
+      <div className="w-full md:w-[60%] mx-auto flex justify-between items-center rounded-full pl-3 h-10 border-neutral-400 shadow-md border-2 relative">
         <TbSearch size={20} className="text-primary mx-2" />
         <input
           className={`${karla.className} text-sm focus:outline-none w-[90%] text-neutral-600 bg-transparent`}
@@ -55,7 +55,7 @@ const SearchComponent: React.FC<{}> = () => {
         />
         <button
           type="submit"
-          className={`${karla.className} bg-primary rounded-full w-[20%] h-full shadow-md border-2 border-white hover:mr-1 text-white`}
+          className={`${karla.className} bg-primary text-[13px] md:text-base rounded-full w-[30%] md:w-[20%] h-full shadow-md border-2 border-white hover:mr-1 text-white`}
         >
           Search
         </button>

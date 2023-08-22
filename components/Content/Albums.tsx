@@ -34,6 +34,7 @@ const Albums: React.FC<{ id: string }> = ({ id }) => {
               Albums
             </div>
             <div className="">
+              <div className="hidden md:block">
               <SimpleGrid cols={5}>
                 {albums.map((album: any, index: number) => (
                   <div key={index} className={`${karla.className} shadow-sm cursor-pointer`}>
@@ -56,6 +57,32 @@ const Albums: React.FC<{ id: string }> = ({ id }) => {
                   </div>
                 ))}
               </SimpleGrid>
+              </div>
+              <div className=" md:hidden">
+              <SimpleGrid cols={2}>
+                {albums.map((album: any, index: number) => (
+                  <div key={index} className={`${karla.className} shadow-sm cursor-pointer`}>
+                    <div className="w-full h-[200px] relative">
+                      <Image
+                        alt="Album Cover"
+                        src={album.cover_big}
+                        fill
+                        style={{ objectFit: "cover", objectPosition: "center" }}
+                      />
+                    </div>
+                    <div className="p-2">
+                      <div className="font-medium text-base text-neutral-600">
+                        {album.title}
+                      </div>
+                      <div className="text-neutral-400 text-sm">
+                        {new Date(album.release_date).getFullYear()}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </SimpleGrid>
+              </div>
+              
             </div>
           </>
         )

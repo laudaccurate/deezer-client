@@ -7,7 +7,7 @@ export default function Home() {
   const { searchResult } = useSearchResultContext();
   return (
     <main className="h-full w-full md:w-[70%] mt-[60px] mx-auto py-4 bg-white">
-      <div className="fixed z-40 mx-auto w-[70%] ">
+      <div className="fixed z-40 mx-auto w-[90%]  md:w-[70%] ">
         <SearchComponent />
       </div>
       <div className="w-full">

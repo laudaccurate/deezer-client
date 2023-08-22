@@ -36,7 +36,7 @@ export default function ArtistPage (){
   return(
 
     <div>
-      <div className="w-full">
+      <div className="w-full h-full">
         {!artist ? (
           <DefaultContent />
         ) : (

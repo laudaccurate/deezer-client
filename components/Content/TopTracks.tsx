@@ -31,11 +31,11 @@ const TopTracks: React.FC<{ id: string }> = ({ id }) => {
             Top Tracks
           </div>
           <>
-            <Skeleton height={45} width="90%" />
-            <Skeleton height={45} mt={10} width="90%" />
-            <Skeleton height={45} mt={10} width="90%" />
-            <Skeleton height={45} mt={10} width="90%" />
-            <Skeleton height={45} mt={10} width="90%" />
+            <Skeleton height={45} width="90%" className="mx-auto" />
+            <Skeleton height={45} mt={10} width="90%" className="mx-auto" />
+            <Skeleton height={45} mt={10} width="90%" className="mx-auto" />
+            <Skeleton height={45} mt={10} width="90%" className="mx-auto" />
+            <Skeleton height={45} mt={10} width="90%" className="mx-auto" />
           </>
         </div>
       ) : (
@@ -48,7 +48,7 @@ const TopTracks: React.FC<{ id: string }> = ({ id }) => {
               {tracks.map((track: any, index: number) => (
                 <div
                   key={index}
-                  className={`${karla.className} flex justify-between items-center p-3 shadow-md m-2 cursor-pointer`}
+                  className={`${karla.className} flex justify-between items-center p-3 shadow-md my-2 md:m-2 cursor-pointer `}
                 >
                   <div className="text-base font-medium">
                     {index + 1}. {track.title}
