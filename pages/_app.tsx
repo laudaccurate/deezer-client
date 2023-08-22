@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { AppProps } from "next/app";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
@@ -8,6 +8,7 @@ import { Karla } from "next/font/google";
 import Layout from "@/components/Utils/Layout";
 import ErrorBoundary from "@/components/Utils/ErrorBoundary";
 import { SearchResult } from "@/hooks/context/SearchResult";
+import { QueryContext } from "@/hooks/context/SearchText";
 
 const font = Karla({
   subsets: ["latin"],
@@ -17,6 +18,18 @@ const font = Karla({
 
 export default function App({ Component, pageProps }: AppProps) {
   const [searchResult, setSearchResult] = useState([]);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (window.localStorage !== undefined) {
+      if (localStorage.getItem("searchResult")) {
+        setSearchResult(JSON.parse(localStorage.getItem("searchResult")!));
+      }
+      if (localStorage.getItem("query")) {
+        setQuery(localStorage.getItem("query")!);
+      }
+    }
+  }, []);
 
   return (
     <div className={font.className}>
@@ -53,11 +66,13 @@ export default function App({ Component, pageProps }: AppProps) {
 
         <LoadingProvider>
           <SearchResult.Provider value={{ searchResult, setSearchResult }}>
-            <Layout pageTitle="Page">
-              <ErrorBoundary>
-                <Component {...pageProps} />
-              </ErrorBoundary>
-            </Layout>
+            <QueryContext.Provider value={{ query, setQuery }}>
+              <Layout pageTitle="Page">
+                <ErrorBoundary>
+                  <Component {...pageProps} />
+                </ErrorBoundary>
+              </Layout>
+            </QueryContext.Provider>
           </SearchResult.Provider>
         </LoadingProvider>
       </MantineProvider>

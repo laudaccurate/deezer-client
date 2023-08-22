@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { LoadingContext } from "../Utils/LoadingFallback";
-import { getDuration } from "@/lib/helperFunctions";
 import { karla } from "@/lib/font";
 import { SimpleGrid } from "@mantine/core";
 import Image from "next/image";
