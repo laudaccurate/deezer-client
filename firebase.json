@@ -1,16 +1,23 @@
 {
   "hosting": {
     "public": "build",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "cleanUrls": true,
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "/**", 
-        "dynamicLinks": true
+        "destination": "/api/artist/[id].html",
+        "regex": "^/api/artist/([^/]+?)(?:/)?$"
+      },
+      {
+        "destination": "/api/artist/[id]/albums.html",
+        "regex": "^/api/artist/([^/]+?)/albums(?:/)?$"
+      },
+      {
+        "destination": "/api/artist/[id]/top.html",
+        "regex": "^/api/artist/([^/]+?)/top(?:/)?$"
+      },
+      {
+        "destination": "/artist/[id].html",
+        "regex": "^/artist/([^/]+?)(?:/)?$"
       }
     ]
   }
