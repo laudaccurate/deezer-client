@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { LoadingContext } from "../Utils/LoadingFallback";
 import { getDuration } from "@/lib/helperFunctions";
 import { karla } from "@/lib/font";
+import { Skeleton } from "@mantine/core";
 
 const TopTracks: React.FC<{ id: string }> = ({ id }) => {
   const { pageLoading, setPageLoading } = useContext(LoadingContext);
@@ -23,9 +24,20 @@ const TopTracks: React.FC<{ id: string }> = ({ id }) => {
   }, [id, setPageLoading]);
 
   return (
-    <div className="bg-white py-3 px-2">
+    <div className="bg-white py-3 px-2 w-full">
       {pageLoading ? (
-        <>Loading</>
+        <div className="w-full">
+          <div className="text-xl font-semibold text-neutral-700 p-2">
+            Top Tracks
+          </div>
+          <>
+            <Skeleton height={45} width="90%" />
+            <Skeleton height={45} mt={10} width="90%" />
+            <Skeleton height={45} mt={10} width="90%" />
+            <Skeleton height={45} mt={10} width="90%" />
+            <Skeleton height={45} mt={10} width="90%" />
+          </>
+        </div>
       ) : (
         tracks && (
           <>
@@ -36,7 +48,7 @@ const TopTracks: React.FC<{ id: string }> = ({ id }) => {
               {tracks.map((track: any, index: number) => (
                 <div
                   key={index}
-                  className={`${karla.className} flex justify-between items-center p-2 border-b border-neutral-400`}
+                  className={`${karla.className} flex justify-between items-center p-3 shadow-md m-2 cursor-pointer`}
                 >
                   <div className="text-base font-medium">
                     {index + 1}. {track.title}

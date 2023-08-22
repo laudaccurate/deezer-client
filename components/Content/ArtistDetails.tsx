@@ -1,6 +1,7 @@
 import Image from "next/image";
 import TopTracks from "./TopTracks";
 import { formatNumber } from "@/lib/helperFunctions";
+import Albums from "./Albums";
 
 const ArtistDetails: React.FC<{ artist: any }> = ({ artist }) => {
   return (
@@ -20,9 +21,12 @@ const ArtistDetails: React.FC<{ artist: any }> = ({ artist }) => {
             <div className="font-medium text-lg text-neutral-600">{formatNumber(artist.nb_fan)} fans</div>
           </div>
         </div>
-        <div>
+        <div className="w-[40%]">
           <TopTracks id={artist.id}/>
         </div>
+      </div>
+      <div>
+        <Albums id={artist.id}/>
       </div>
     </div>
   );

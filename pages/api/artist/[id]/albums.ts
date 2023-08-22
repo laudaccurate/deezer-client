@@ -31,7 +31,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   await runMiddleware(req, res, cors)
 
-  fetch(`${API_URL}artist/${id}/albums`, requestOptions as RequestInit)
+  fetch(`${API_URL}/artist/${id}/albums`, requestOptions as RequestInit)
     .then((response) => response.json())
     .then((result) => {
       console.log("search result ===", result, "=====");
