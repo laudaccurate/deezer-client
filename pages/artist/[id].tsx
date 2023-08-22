@@ -18,12 +18,9 @@ export default function ArtistPage (){
     };
   
     fetch(`/api/artist/${router.query.id}`, requestOptions as RequestInit)
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((result) => {
-        const resp = JSON.parse(result);
-        console.log("search result ===", resp.data, "=====");
-  
-        setArtist(resp.data);
+        setArtist(result);
         setPageLoading(false)
       })
       .catch((error) => {

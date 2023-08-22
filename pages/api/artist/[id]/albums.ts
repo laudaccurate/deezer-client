@@ -27,24 +27,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     method: "GET",
     redirect: "follow",
   };
-  const data = JSON.parse(req.body)
-  const id = data.id;
+  const id = req.query.id;
 
   await runMiddleware(req, res, cors)
 
   fetch(`${API_URL}artist/${id}/albums`, requestOptions as RequestInit)
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then((result) => {
-      const resp = JSON.parse(result);
-      console.log("search result ===", resp.data, "=====");
+      console.log("search result ===", result, "=====");
 
       // res.end("ok");
-      return res.status(200).json(resp.data);
+      return res.status(200).send(result);
     })
     .catch((error) => {
       console.log("error", error);
 
-      return res.status(error.status).json(error);
+      return res.status(500).json(error);
     });
 
   // res.end("ok");
